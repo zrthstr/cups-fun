@@ -1,0 +1,28 @@
+#
+# CUPS pkg-config file
+#
+# Copyright © 2020-2024 by OpenPrinting.
+#
+# Licensed under Apache License v2.0.  See the file "LICENSE" for more
+# information.
+#
+
+prefix=/home/seclab/cups/nonroot
+exec_prefix=/home/seclab/cups/nonroot
+includedir=/home/seclab/cups/nonroot/include/libcups2
+libdir=/home/seclab/cups/nonroot/lib64
+
+cups_api_version="2.5b1"
+cups_build="cups-2.5b1"
+cups_datadir=/home/seclab/cups/nonroot/share/cups
+cups_serverbin=/home/seclab/cups/nonroot/lib/cups
+cups_serverroot=/home/seclab/cups/nonroot/etc/cups
+
+Name: CUPS
+Description: CUPS API Library
+Version: 2.5b1
+URL: https://openprinting.github.io/cups/
+Cflags:  -I/home/seclab/cups/nonroot/include/libcups2
+Libs: -L/home/seclab/cups/nonroot/lib64 -lcups
+Libs.private: -lm   -lz 
+Requires:  openssl avahi-client

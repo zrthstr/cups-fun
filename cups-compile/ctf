@@ -1,0 +1,10 @@
+
+PWD=$(pwd)
+
+cd cups
+./configure --prefix=/home/seclab/cups/nonroot --enable-debug 
+
+make
+make BUILDROOT=/home/seclab/cups/nonroot  install
+
+cd $PWD
