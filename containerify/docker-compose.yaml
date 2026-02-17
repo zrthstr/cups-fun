@@ -2,7 +2,7 @@ services:
   cups:
     build: .
     ports:
-      - "10631:10631"
+      - "20631:10631"
     volumes:
       - cups_etc:/etc/cups
       - cups_spool:/var/spool/cups

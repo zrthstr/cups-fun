@@ -4,12 +4,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       cups \
-      cups-client \
       libcups2 \
       ca-certificates \
       curl \
       vim \
     && rm -rf /var/lib/apt/lists/*
+     
+
+# cups-client \
 
 COPY cupsd.conf /etc/cups/cupsd.conf
 
