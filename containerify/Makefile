@@ -16,6 +16,9 @@ down:
 logs:
 	podman-compose logs -f $(SERVICE)
 
+logs2:
+	podman-compose exec $(SERVICE) bash -c 'tail -f /var/log/cups/*'
+
 sh:
 	podman-compose exec $(SERVICE) bash
 
@@ -29,3 +32,5 @@ clean:
 	podman rmi $(IMAGE) 2>/dev/null || true
 	podman volume prune -f
 
+curl:
+	curl 127.0.0.1:10631
