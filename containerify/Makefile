@@ -5,29 +5,36 @@ SERVICE := cups
 
 #build:
 #	podman build -t $(IMAGE) .
+#
+
+
+COMPOSE = podman compose
+
+rmi:
+	$(COMPOSE) down --rmi all --volumes --remove-orphans
 
 up:
-	podman-compose up -d --build
+	$(COMPOSE) up -d --build
 
 down:
-	podman-compose down
+	$(COMPOSE) down
 
 logs:
-	podman-compose logs -f $(SERVICE)
+	$(COMPOSE) logs -f $(SERVICE)
 
 logs2:
-	podman-compose exec $(SERVICE) bash -c 'tail -f /var/log/cups/*'
+	$(COMPOSE) exec $(SERVICE) bash -c 'tail -f /var/log/cups/*'
 
 sh:
-	podman-compose exec $(SERVICE) bash
+	$(COMPOSE) exec $(SERVICE) bash
 
 
 rebuild:
-	podman-compose down
-	podman-compose up -d --build
+	$(COMPOSE) down
+	$(COMPOSE) up -d --build
 
 clean:
-	podman-compose down
+	$(COMPOSE) down
 	podman rmi $(IMAGE) 2>/dev/null || true
 	podman volume prune -f
 

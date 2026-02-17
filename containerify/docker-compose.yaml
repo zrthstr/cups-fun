@@ -3,13 +3,18 @@ services:
     build: .
     ports:
       - "20631:10631"
-    volumes:
-      - cups_etc:/etc/cups
-      - cups_spool:/var/spool/cups
-      - cups_logs:/var/log/cups
+#    volumes:
+#      - cups_etc:/etc/cups
+#      - cups_spool:/var/spool/cups
+#      - cups_logs:/var/log/cups
 
-volumes:
-  cups_etc:
-  cups_spool:
-  cups_logs:
+#volumes:
+#  cups_etc:
+#  cups_spool:
+#  cups_logs:
+
+networks:
+  default:
+    name: containerify_default
+    external: true
 
