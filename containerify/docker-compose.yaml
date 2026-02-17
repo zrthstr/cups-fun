@@ -1,0 +1,15 @@
+services:
+  cups:
+    build: .
+    ports:
+      - "10631:10631"
+    volumes:
+      - cups_etc:/etc/cups
+      - cups_spool:/var/spool/cups
+      - cups_logs:/var/log/cups
+
+volumes:
+  cups_etc:
+  cups_spool:
+  cups_logs:
+
