@@ -11,15 +11,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       vim \
     && rm -rf /var/lib/apt/lists/*
 
+COPY cupsd.conf /etc/cups/cupsd.conf
+
 # Allow remote access (optional-ish). Adjust to your needs.
-RUN sed -i \
-      -e 's/^Listen .*/Listen 0.0.0.0:10631\nServerName foo/' \
-      -e 's/^Browsing .*/Browsing Off/' \
-      /etc/cups/cupsd.conf \
- && sed -i 's/^WebInterface .*/WebInterface Yes/' /etc/cups/cupsd.conf \
- && printf '\n<Location />\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf \
- && printf '\n<Location /admin>\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf \
- && printf '\n<Location /admin/conf>\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf
+#RUN sed -i \
+#      -e 's/^Listen .*/Listen 0.0.0.0:10631\nServerName foo/' \
+#      -e 's/^Browsing .*/Browsing Off/' \
+#      /etc/cups/cupsd.conf \
+# && sed -i 's/^WebInterface .*/WebInterface Yes/' /etc/cups/cupsd.conf \
+# && printf '\n<Location />\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf \
+# && printf '\n<Location /admin>\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf \
+# && printf '\n<Location /admin/conf>\n  Order allow,deny\n  Allow all\n</Location>\n' >> /etc/cups/cupsd.conf
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

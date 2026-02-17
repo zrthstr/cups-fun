@@ -1,4 +1,3 @@
-
 IMAGE := cups-debian
 SERVICE := cups
 
