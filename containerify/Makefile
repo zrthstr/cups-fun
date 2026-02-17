@@ -1,10 +1,10 @@
-IMAGE := cups-debian
+IMAGE := cups-debian2
 SERVICE := cups
 
 .PHONY: build up down logs sh rebuild clean
 
-build:
-	podman build -t $(IMAGE) .
+#build:
+#	podman build -t $(IMAGE) .
 
 up:
 	podman-compose up -d --build
